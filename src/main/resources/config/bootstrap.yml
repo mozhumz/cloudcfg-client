@@ -1,0 +1,39 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:1111/eureka/
+spring:
+  rabbitmq:
+    addresses: localhost
+    username: guest
+    password: guest
+  profiles:
+    active: base
+
+  application:
+    name: test-client
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: service-config
+#      uri:  http://127.0.0.1:8888/
+#      label: master
+#      使用的配置中心文件名为{应用名称}-｛profile｝ 如:demo-client-base.yml
+      profile: base
+server:
+  port: 9300
+
+#是否开启基本的鉴权，默认为true
+security:
+  basic:
+    enabled: false
+
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
